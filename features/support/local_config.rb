@@ -21,16 +21,16 @@ class CapybaraConfig
     attr_accessor :server_host
   end
   
-  def selenium(options)
-    Capybara.register_driver :selenium do |app|
-      Capybara::Driver::Selenium.new(app, options)      
-    end
-  end
-
-  def selenium_remote(options)
-    options[:browser] = :remote
-    selenium(options)
-  end
+  #  def selenium(options)
+  #    Capybara.register_driver :selenium do |app|
+  #      Capybara::Driver::Selenium.new(app, options)      
+  #    end
+  #  end
+  #
+  #  def selenium_remote(options)
+  #    options[:browser] = :remote
+  #    selenium(options)
+  #  end
 
   def server_host(host)
     CapybaraConfig.server_host = host

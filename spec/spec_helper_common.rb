@@ -46,8 +46,8 @@ require 'capybara-screenshot/rspec'
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
 Dir.mkdir "tmp/capybara" rescue nil
+Capybara.save_and_open_page_path = Rails.root.join('tmp','capybara').to_s
 Capybara.save_path = Rails.root.join('tmp','capybara').to_s
-Capybara.save_and_open_page_path = "tmp/capybara"
 
 require 'remarkable_activerecord'
 # we have to include our extensions in the rspec configuration block
