@@ -65,7 +65,7 @@ describe "Portal::Offering" do
       it "returns a valid config that sets the correct session" do
         visit portal_offering_path(:id => @learner.offering.id, :format => :jnlp)
         jnlp_xml = Nokogiri::XML(page.driver.response.body)
-        config_url = jnlp_xml.xpath("/jnlp/application-desc/argument")[0]
+        config_url = jnlp_xml.xpath("/jnlp/application-desc/argument")[0].content
         page.reset!
         visit config_url
         config_xml = Nokogiri::XML(page.driver.response.body)
@@ -80,7 +80,7 @@ describe "Portal::Offering" do
       it "should not be cached" do
         visit portal_offering_path(:id => @learner.offering.id, :format => :jnlp)
         jnlp_xml = Nokogiri::XML(page.driver.response.body)
-        config_url = jnlp_xml.xpath("/jnlp/application-desc/argument")[0]
+        config_url = jnlp_xml.xpath("/jnlp/application-desc/argument")[0].content
         visit config_url
         headers = page.driver.response.headers
         headers.should have_key 'Pragma'
