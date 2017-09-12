@@ -22,13 +22,13 @@ Feature: Teacher can see full status
     And I should see "Smith, Chuck"
 
 
-  Scenario: Teacher can see all the activities when an offering is expanded except teacher only activity
-    When I expand the column "Atomic Energy" on the Full Status page
-    And I should wait 5 seconds
-    Then the column for "Atomic Energy" on the Full Status page should be expanded
-    And I should see "Radio activity"
-    And I should see "Nuclear Energy"
-    And I should not see "Aeroplane"
+  #Scenario: Teacher can see all the activities when an offering is expanded except teacher only activity
+  #  When I expand the column "Atomic Energy" on the Full Status page
+  #  And I should wait 5 seconds
+  #  Then the column for "Atomic Energy" on the Full Status page should be expanded
+  #  And I should see "Radio activity"
+  #  And I should see "Nuclear Energy"
+  #  And I should not see "Aeroplane"
 
 
   @javascript
