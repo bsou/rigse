@@ -127,7 +127,7 @@ When /^(?:|I )uncheck "([^"]*)"$/ do |field|
 end
 
 When /^(?:|I )choose "([^"]*)"$/ do |field|
-  choose(field)
+  choose(field, visible: false)
 end
 
 When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|

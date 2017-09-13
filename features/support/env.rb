@@ -42,10 +42,23 @@ Capybara.default_max_wait_time = 5
 # Register the correct driver for Firefox 48+ (w/ geckodriver)
 #
 Capybara.register_driver :selenium do |app|
+
+    profile             = Selenium::WebDriver::Firefox::Profile.new
+    client              = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 60
+
     Capybara::Selenium::Driver.new(app,
         browser: :firefox,
         # profile: profile,
+        http_client: client,
         driver_path: Rails.root.join('test-deps','geckodriver').to_s )
+
+    #Capybara::Selenium::Driver.new(app,
+    #    browser: :firefox,
+    #    # profile: profile,
+    #    driver_path: Rails.root.join('test-deps','geckodriver').to_s )
+
+
 end
 
 

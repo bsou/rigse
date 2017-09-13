@@ -184,8 +184,7 @@ When /^I follow "(.*)" on the (.*) "(.*)" from the class "(.*)"$/ do |button_nam
     :clazz_id => clazz.id
   })
   
-  selector = "#portal__offering_#{offering.id}"
-  with_scope(selector) do
+  within first("#portal__offering_#{offering.id}") do
     click_link(button_name)
   end
 end

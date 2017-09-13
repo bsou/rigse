@@ -70,7 +70,7 @@ When /^(?:|I )run the (?:investigation|activity|external activity)$/ do
 
   # note this isn't an exact match sometimes the link is Run by Myself, sometimes it is just Run
   # and addtionally if groups are turned on then there will be another link that is Run with Other Students
-  find(".solo.button").click
+  first(".solo.button").click
 end
 
 Then /^I should see the run link for "([^"]*)"$/ do | runnable_name |

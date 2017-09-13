@@ -12,7 +12,8 @@ And /^I fill Class Word with "([a-zA-Z0-9]+)"$/ do |classWord|
 end
 
 And /^I select Term "([A-Z]{1}[a-z]+)" from the drop down$/ do |term|
-  select(term , :from => 'portal_clazz_semester_id')
+  # select(term , :from => 'portal_clazz_semester_id')
+  select term, :from => "portal_clazz_semester_id", :match => :first
 end
 
 And /^I uncheck investigation with label "(.+)"$/ do |investigation_name|

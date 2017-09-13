@@ -78,7 +78,7 @@ Then /^the (portal|browser) should send a (POST|GET) to "([^"]*)"$/ do |client,m
 end
 
 def create_and_run_external_rest_activity(activity_name)
-  login_as('student')
+  login_as_username('student')
   visit('/')
   within(".offering_for_student:contains('#{activity_name}')") do
     find(".solo.button").click
@@ -100,7 +100,7 @@ Given /^the student ran the external REST activity "([^"]*)" before$/ do |activi
 end
 
 When /^the student runs the external activity "([^"]*)" again$/ do |activity_name|
-  login_as('student')
+  login_as_username('student')
   visit('/')
   within(".offering_for_student:contains('#{activity_name}')") do
     find(".solo.button").click
@@ -108,7 +108,7 @@ When /^the student runs the external activity "([^"]*)" again$/ do |activity_nam
 end
 
 When /^the browser returns the following data to the portal$/ do |string|
-  login_as('student')
+  login_as_username('student')
   path = @learner.remote_endpoint_path
   Delayed::Job.should_receive(:enqueue)
   post_with_bearer_token(path, {:content => string})

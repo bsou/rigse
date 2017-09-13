@@ -9,10 +9,20 @@ def find_or_create_offering(runnable,clazz)
     offering
 end
 
-def login_as(username)
+def login_as_username(username)
+
+  logout(:user)
+
+  # @current_user = User.create!(:username => username, :password => 'password')
+
+  @current_user = User.find_by_login(username)
+  login_as(@current_user, :scope => :user)
+
   visit "/login/#{username}"
-  page.should have_content(username)
+
+  # page.should have_content(username)
   @cuke_current_username = username
+
 end
 
 def login_with_ui_as(username, password)
@@ -94,18 +104,18 @@ Given /the following users[(?exist):\s]*$/i do |users_table|
 end
 
 Given /^(?:|I )login as an admin$/ do
-  login_as('admin')
+  login_as_username('admin')
 end
 
 
 # the quote in the pattern is to prevent this from matching other rules
 # and hopefully there is no need for quotes in a usernames
 Given /^I am logged in with the username ([^"]*)$/ do |username|
-  login_as(username)
+  login_as_username(username)
 end
 
 Given /^(?:|I )login with username[\s=:,]*(\S+)$/ do |username|
-  login_as(username)
+  login_as_username(username)
   visit "/"
 end
 
