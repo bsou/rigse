@@ -193,11 +193,12 @@ end
 group :test, :cucumber do
   gem "spring-commands-cucumber"
   gem "spring-commands-rspec"
-  gem "selenium-webdriver", ">= 3.3"
+  gem "selenium-webdriver", ">= 3.5"
+  gem "geckodriver-helper"
   gem "cucumber",           "~> 1.3.0"
   gem "cucumber-rails",     "~> 1.3.0", :require => false
   gem "database_cleaner",   "~> 0.7.2"
-  gem "capybara",           "~> 2.7.1"
+  gem "capybara",           "~> 2.15.1"
   gem "rspec",              "~> 2.11.0"
   gem "rspec-rails",        "~> 2.11.0"
   gem "email_spec",         "~> 1.2.1"

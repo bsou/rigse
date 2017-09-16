@@ -1,6 +1,6 @@
 
 And /^I follow copy class link for the class "(.+)"$/ do|class_name|
-  xpath_for_list_elem = "//tr[contains(.,'#{class_name}')]"
+  xpath_for_list_elem = "(//tr[contains(.,'#{class_name}')])[1]"
   within(:xpath, xpath_for_list_elem) do
     click_link('Copy Class')
   end
@@ -17,7 +17,7 @@ And /^I move "(.+)" to the top of the list with id "(.+)"$/ do|sortable_name, id
                        var strListLabel = null;
                        for(var i=0; i< arrListChildren.length; i++)
                        {
-                          strListLabel = arrListChildren[i].getElementsByTagName('label')[0].innerHTML.stripTags().strip();
+                          strListLabel = arrListChildren[i].getElementsByTagName('label')[0].innerText;
                           if(strListLabel == '#{sortable_name}')
                           {
                             offeringToMove = arrListChildren[i];
@@ -46,9 +46,9 @@ end
 Then /^"(.+)" should be the first on the list with id "(.+)"$/ do|class_name, id_of_list|
   result = page.execute_script("
                                  var bSortSuccess = false;
-                                 var strUlId = '#{id_of_list}'
+                                 var strUlId = '#{id_of_list}';
                                  var oLabel = $$('#'+strUlId+' > li:first-child label')[0];
-                                 var strClassNameOfTopMostClass = oLabel.innerHTML.stripTags().strip()
+                                 var strClassNameOfTopMostClass = oLabel.innerText;
                                  if(strClassNameOfTopMostClass == '#{class_name}')
                                  {
                                     bSortSuccess = true;
@@ -61,9 +61,9 @@ end
 Then /^"(.+)" should be the last on the list with id "(.+)"$/ do|class_name, id_of_list|
   result = page.execute_script("
                                  var bSortSuccess = false;
-                                 var strUlId = '#{id_of_list}'
+                                 var strUlId = '#{id_of_list}';
                                  var oLabel = $$('#'+strUlId+' > li:last-child label')[0];
-                                 var strClassNameOfTopMostClass = oLabel.innerHTML.stripTags().strip()
+                                 var strClassNameOfTopMostClass = oLabel.innerText;
                                  if(strClassNameOfTopMostClass == '#{class_name}')
                                  {
                                     bSortSuccess = true;
@@ -81,7 +81,7 @@ And /^"(.+)" should be the last class$/ do |class_name|
 end
 
 And /^"(.+)" should be the first class$/ do |class_name|
-  within(:xpath, '//li[2]') do
+  within(:xpath, '(//li[2])[1]') do
     has_content?("#{class_name}")
   end
 end

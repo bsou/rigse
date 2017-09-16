@@ -127,7 +127,7 @@ When /^(?:|I )uncheck "([^"]*)"$/ do |field|
 end
 
 When /^(?:|I )choose "([^"]*)"$/ do |field|
-  choose(field, visible: false)
+  choose(field, { :match => :first, :visible => false } )
 end
 
 When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
@@ -286,7 +286,7 @@ And /^I select "(.+)" from the html dropdown "(.+)"$/ do |label, dropdown_id|
 
     for (var i = 0; i < arrListItems.length; i++)
     {
-      if (arrListItems[i].innerHTML.stripTags().strip() == '#{label}')
+      if (arrListItems[i].innerText == '#{label}')
       {
         bSuccess = true;
         arrListItems[i].simulate('mouseup');

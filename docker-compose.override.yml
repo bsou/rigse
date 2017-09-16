@@ -2,9 +2,17 @@
 # You need to explicity include it in the list COMPOSE_FILE files.
 version: '2'
 services:
+
   app:
     ports:
       - "3000:3000"
+
+      #
+      # Expose this port to view cucumber firefox tests with a vnc client
+      #
+      - "5900:5900"
+
   solr:
     ports:
       - "8983:8983"
+

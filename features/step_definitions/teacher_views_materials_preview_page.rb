@@ -2,17 +2,17 @@ And /^(?:|I )click link "(.+)" for (investigation|activity) "(.+)" on the materi
   case material_type
     when "investigation"
       within(:xpath,"//table[@class = 'browse_material_header']") do
-        click_link(link)
+        first(:link, link).click
       end
     when "activity"
-      within(:xpath,"//table[@class = 'activity_list']/tbody/tr[contains(.,'#{material_name}')]") do
-        click_link(link)
+      within(:xpath,"(//table[@class = 'activity_list']/tbody/tr[contains(.,'#{material_name}')])[1]") do
+        first(:link, link).click
       end
   end
 end
 
 When /^(?:|I )uncheck "(.+)" from the investigation preview page$/ do |activity_name|
-  within(:xpath,"//table[@class = 'activity_list']/tbody/tr[contains(.,'#{activity_name}')]") do
+  within(:xpath,"(//table[@class = 'activity_list']/tbody/tr[contains(.,'#{activity_name}')])[1]") do
     uncheck("activity_id[]")
   end
 end

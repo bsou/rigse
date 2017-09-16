@@ -29,7 +29,7 @@ def login_with_ui_as(username, password)
 
   visit "/users/sign_in"
 
-  within("form[@id='new_user']") do
+  within(:xpath, "//form[@id='new_user']") do
     fill_in("user_login",       :with => username)
     fill_in("user_password",    :with => password)
     click_button("Sign in")
@@ -242,7 +242,9 @@ end
 
 When /^(?:|I )close the newly opened window$/ do
   page.driver.browser.switch_to.window page.driver.browser.window_handles.last do
-    page.execute_script "window.close();"
+    # page.execute_script "window.close();"
+    page.driver.browser.close
+
   end
 end
 

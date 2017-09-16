@@ -21,15 +21,20 @@ And /^I uncheck investigation with label "(.+)"$/ do |investigation_name|
 end
 
 And /^I move investigation named "(.+)" to the top of the list$/ do |investigation_name|
+
   page.execute_script(
                       "
+                       //
+                       // This should have stripTags() from prototype.js
+                       // but it doesn't seem to...?
+                       //
                       
                        var sortableList = document.getElementById('sortable');
                        var arrListChildren = sortableList.getElementsByTagName('li');
                        var offeringToMove;
                        for(var i=0; i< arrListChildren.length; i++)
                        {
-                          if(arrListChildren[i].innerHTML.stripTags().strip().toLowerCase() == \"#{investigation_name}\".toLowerCase())
+                          if(arrListChildren[i].innerText.toLowerCase() == \"#{investigation_name}\".toLowerCase())
                           {
                             offeringToMove = arrListChildren[i];
                             break;
