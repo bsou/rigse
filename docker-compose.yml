@@ -3,9 +3,11 @@
 version: '2'
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile-travis
+    image: travis-trusty:latest
+
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile-travis
     
     # command: docker/dev/run.sh
 

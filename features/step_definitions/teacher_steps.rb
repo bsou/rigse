@@ -59,7 +59,7 @@ end
 When /^I run the student's investigation for "([^"]+)"$/ do |clazz_name|
   step_text = "I am on the class page for \"#{clazz_name}\""
   step step_text
-  within(".offering_print_all") do
+  within(".item") do
     click_link 'Run'
   end
 end
