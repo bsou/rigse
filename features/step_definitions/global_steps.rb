@@ -198,7 +198,7 @@ end
 
 Then /^I should see the button "([^"]*)"$/ do |locator|
   msg = "no button '#{locator}' found"
-  find(:xpath, XPath::HTML.button(locator), :message => msg)
+  find(:xpath, XPath::HTML.button(locator), :text => msg)
 end
 
 Then /^I should not see the button "([^"]*)"$/ do |button|
