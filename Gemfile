@@ -97,10 +97,8 @@ source "http://rubygems.org"
   gem 'rush',                 :git => 'git://github.com/concord-consortium/rush'
   # to support hosting paperclip attachments on S3, and Load Balancing
   gem "aws-sdk",              "~> 1.55.0"
-  gem 'newrelic_rpm',         "~> 3.15", ">= 3.15.0.314"
+  gem 'newrelic_rpm', '~> 4.4', '>= 4.4.0.336'
   gem "tinymce-rails",        "~>3.5.6"
-  gem "contentflow",          :git => 'git://github.com/concord-consortium/contentflow',
-    :branch => "remove-addon-support"
 
 # Ideally we pre-compile all asetts and then run production
 # with out the asset compiling requirements. But We have dynamic assets

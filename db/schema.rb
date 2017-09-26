@@ -833,8 +833,8 @@ ActiveRecord::Schema.define(:version => 20170921190628) do
     t.text     "description",              :limit => 16777215
     t.text     "url",                      :limit => 16777215
     t.string   "publication_status"
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
     t.integer  "offerings_count",                              :default => 0
     t.string   "save_path"
     t.boolean  "append_learner_id_to_url"
@@ -863,8 +863,9 @@ ActiveRecord::Schema.define(:version => 20170921190628) do
     t.datetime "archive_date"
     t.string   "credits"
     t.string   "license_code"
-    t.boolean  "enable_sharing",                               :default => true
     t.boolean  "append_auth_token"
+    t.boolean  "enable_sharing",                               :default => true
+    t.string   "material_type",                                :default => "Activity"
   end
 
   add_index "external_activities", ["is_featured", "publication_status"], :name => "featured_public", :length => {"is_featured"=>nil, "publication_status"=>191}
@@ -1094,6 +1095,7 @@ ActiveRecord::Schema.define(:version => 20170921190628) do
     t.boolean  "no_snapshots",                               :default => false
     t.boolean  "save_interactive_state",                     :default => false
     t.string   "license_code"
+    t.integer  "external_activity_id"
   end
 
   create_table "investigations", :force => true do |t|
