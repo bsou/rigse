@@ -47,12 +47,24 @@ When /^I drag the (\d+)(?:st|nd|rd|th) material in the materials collection "([^
   item_selector = "#materials_collection_item_#{@last_moved_item.id} .material_item_handle"
   if end_position == "top"
     # FIXME This actually drops it into 2nd position...
-    dest = "#materials_collection_item_#{items.first.id}"
+    dest = "#materials_collection_item_#{items.first.id} .material_item_handle"
   else
     dest = "#materials_collection_item_#{items.last.id}"
   end
+  
+  el_src = page.find(item_selector)
+  el_dst = page.find(dest)
 
-  page.find(item_selector).drag_to(page.find(dest))
+  puts "*** src #{el_src} dst #{el_dst}"
+
+  #actionbuilder = page.driver.browser.action
+  #actionbuilder.click_and_hold(el_src)
+  #                  .move_to(el_dst)
+  #                  .release
+  #                  .perform
+
+  el_src.drag_to(el_dst)
+
 end
 
 Then /^the previously moved material in the materials collection "([^"]*)" should be (first|last)$/ do |name, position|
