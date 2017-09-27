@@ -47,6 +47,7 @@ Feature: Admin can work with materials collections
   Scenario: Admin edits existing Materials Collection
     When I am on the materials collection index page
     And I click on the edit link for materials collection "Collection 4"
+    And I wait 5 seconds
     Then I should see "Materials Collection: Collection 4"
     When I fill in "materials_collection[name]" with "My new Collection edits"
     And I fill in "materials_collection[description]" with "My new Description"
@@ -87,7 +88,13 @@ Feature: Admin can work with materials collections
     Then I should not see "Collection 1"
     And I should not see "Collection 4"
     And I should see "testing fast cars is assigned to the selected collection(s) successfully" within the lightbox in focus
-    When I press "OK"
+    Then I press "OK"
+    #
+    # This will not click the "Add to Collection" link again on this page.
+    # So enter again from original path.
+    #
+    When I am on the search instructional materials page
+    And I search for "testing fast cars" on the search instructional materials page
     And I follow the "Add to Collection" link for the investigation "testing fast cars"
     Then I should see "Select Collection(s)"
     And I should see "Already assigned to the following collection(s)"

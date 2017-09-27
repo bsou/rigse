@@ -21,8 +21,7 @@ RailsPortal::Application.configure do
   #config.action_controller.asset_host = "file://#{::Rails.root}/public/assets/"
   #config.action_controller.asset_host = "file://#{::Rails.root}/public/"
   #config.serve_static_assets = true # default is false
-
-  config.assets.debug = true
+  #config.assets.debug = true
 
   # Disable request forgery protection in test environment
   # config.action_controller.allow_forgery_protection    = false
