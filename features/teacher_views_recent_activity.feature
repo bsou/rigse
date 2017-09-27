@@ -115,6 +115,7 @@ Feature: Teacher can see recent activity
       | chuck   | Mechanics | Aerodynamics  | image_q         | Y      |
       | chuck   | Mechanics | Aerodynamics  | c               | Y      |
     And I follow "Recent Activity" within left panel for class navigation
+    And I wait 1 seconds
     And I follow "Show Detail" within the first recent activity on the recent activity page
     Then I should see "Not Yet Started All students have started this sequence."
 

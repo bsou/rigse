@@ -223,6 +223,34 @@ Then /^(?:|I )need to confirm "([^"]*)"$/ do |text|
   page.driver.browser.switch_to.alert.accept
 end
 
+When /^I launch a new window by clicking "(.*)"$/ do |text|
+    @popup = window_opened_by do
+        click_button text
+    end
+end
+
+Then /^the new window should contain "(.*)"$/ do |content|
+    within_window(@popup) do
+        page.should have_content(content)
+    end
+end
+
+When /^(?:|I )close the new window$/ do
+
+    # Nothing closes these newly opened windows without failing...
+
+    #within_window(@popup) do
+    #    page.driver.browser.close #closes popup
+    #    # page.execute_script "window.close()"
+    #    # page.quit
+    #    # @popup.close
+    #end
+    #within_window(page.driver.browser.window_handles.last) do
+    #    page.driver.browser.close #closes popup
+    #end
+
+end
+
 When /^the newly opened window (should|should not) have content "(.*)"$/ do |present, content|
   step 'I wait 2 seconds'
   page.driver.browser.switch_to.window page.driver.browser.window_handles.last do
@@ -240,11 +268,14 @@ When /^Help link should not appear in the top navigation bar$/ do
 end
 
 When /^(?:|I )close the newly opened window$/ do
-  page.driver.browser.switch_to.window page.driver.browser.window_handles.last do
-    # page.execute_script "window.close();"
-    page.driver.browser.close
 
-  end
+  # Cannot close these....
+
+  #page.driver.browser.switch_to.window page.driver.browser.window_handles.last do
+  #  # page.execute_script "window.close();"
+  #  page.driver.browser.close
+  #
+  #  end
 end
 
 require 'securerandom'

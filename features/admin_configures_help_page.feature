@@ -14,10 +14,9 @@ Feature: Admin configures help page
   @javascript
   Scenario: Admin can preview the help page if it has added HTML
     When I fill in "admin_settings[custom_help_page_html]" with "Creating Help Page"
-    And I press "Preview Custom Help Page"
-    And I wait 2 seconds
-    Then the newly opened window should have content "Creating Help Page"
-    And I close the newly opened window
+    And I launch a new window by clicking "Preview Custom Help Page"
+    Then the new window should contain "Creating Help Page"
+    And I close the new window
 
   @javascript
   Scenario: Admin can add an external URL for the help page
