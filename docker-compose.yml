@@ -1,6 +1,6 @@
 # This file is meant for development, in production we use a slightly different
 # configuration
-version: '2'
+version: '3'
 services:
   app:
     image: travis-trusty:latest
@@ -54,7 +54,7 @@ services:
       #
       # portal-pages URLs
       #
-      PORTAL_PAGES_LIBRARY_URL:
+      PORTAL_PAGES_LIBRARY_URL: "${PORTAL_PAGES_LIBRARY_URL:-https://portal-pages.concord.org/library}"
       EXTERNAL_CSS_URL:
 
       GOOGLE_ANALYTICS_ACCOUNT:
@@ -70,6 +70,12 @@ services:
       # Set to true to enable dynamic robots.txt
       #
       DYNAMIC_ROBOTS_TXT:
+
+      #
+      # When PORTAL_FEATURES has "allow_cors" set this to a list of
+      # origins, or * for all.
+      #
+      CORS_ORIGINS:
 
       #
       # Set the portal version displayed in the UI footer.
