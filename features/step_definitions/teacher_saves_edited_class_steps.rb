@@ -34,7 +34,7 @@ And /^I move investigation named "(.+)" to the top of the list$/ do |investigati
                        var offeringToMove;
                        for(var i=0; i< arrListChildren.length; i++)
                        {
-                          if(arrListChildren[i].innerText.toLowerCase() == \"#{investigation_name}\".toLowerCase())
+                          if(arrListChildren[i].innerText.replace(/^\s+/, '').replace(/\s+$/, '').toLowerCase() == \"#{investigation_name}\".toLowerCase())
                           {
                             offeringToMove = arrListChildren[i];
                             break;
