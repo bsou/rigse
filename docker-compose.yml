@@ -3,21 +3,12 @@
 version: '3'
 services:
   app:
-    image: travis-trusty:latest
 
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile-travis
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
     
-    # command: docker/dev/run.sh
-
-    #
-    # For debugging, set "command" to "bash" to start a shell.
-    # Additionally specify "stdin_open" and "tty" both set to "true".
-    #
-    stdin_open: true
-    tty: true
-    command: bash
+    command: docker/dev/run.sh
 
     environment:
       DB_HOST: mysql

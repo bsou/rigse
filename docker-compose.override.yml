@@ -10,7 +10,7 @@ services:
       #
       # Expose this port to view cucumber firefox tests with a vnc client
       #
-      - "5900:5900"
+      # - "5900:5900"
 
   solr:
     ports:
